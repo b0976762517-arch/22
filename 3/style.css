@@ -1,0 +1,1708 @@
+/* -------------------------------------------------------------
+ * La Roche-Posay clinical-themed styles
+ * Brand Blue: #0096D6, Clinical Gray: #F8F9FA
+ * Clean modern sans-serif typography, Glassmorphism, animations
+ * ------------------------------------------------------------- */
+
+/* DESIGN SYSTEM VARIABLES */
+:root {
+    --brand-blue: #0096D6;
+    --brand-blue-hover: #007BB0;
+    --brand-blue-light: rgba(0, 150, 214, 0.08);
+    --brand-blue-semi: rgba(0, 150, 214, 0.15);
+    --bg-clinical: #F8F9FA;
+    --text-primary: #0B2545;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --white: #FFFFFF;
+    --success-green: #10B981;
+    --success-green-light: rgba(16, 185, 129, 0.1);
+    --error-red: #EF4444;
+    --error-red-light: rgba(239, 68, 68, 0.08);
+    
+    /* Shadows */
+    --shadow-soft: 0 10px 30px rgba(11, 37, 69, 0.04);
+    --shadow-medium: 0 20px 40px rgba(0, 150, 214, 0.08);
+    --shadow-glass: 0 8px 32px 0 rgba(11, 37, 69, 0.06);
+    --border-glass: 1px solid rgba(0, 150, 214, 0.12);
+    
+    /* Font stacks */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* RESET & BASE STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-clinical);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* BACKGROUND GLOW EFFECTS */
+.bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.bg-glow-1 {
+    top: -100px;
+    right: -100px;
+    background: radial-gradient(circle, var(--brand-blue-semi) 0%, transparent 70%);
+}
+
+.bg-glow-2 {
+    bottom: 10%;
+    left: -200px;
+    background: radial-gradient(circle, rgba(0, 150, 214, 0.1) 0%, transparent 75%);
+}
+
+/* LAYOUT CONTAINER */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 24px 60px 24px;
+    min-height: calc(100vh - 140px);
+}
+
+/* HEADER & FOOTER */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(248, 249, 250, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 150, 214, 0.08);
+    z-index: 1000;
+    height: 70px;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-badge {
+    background: var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.2);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.clinical-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--brand-blue);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 150, 214, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 150, 214, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 150, 214, 0); }
+}
+
+.main-footer {
+    border-top: 1px solid rgba(0, 150, 214, 0.08);
+    padding: 30px 24px;
+    text-align: center;
+    background: var(--white);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.main-footer p {
+    margin-bottom: 8px;
+}
+
+.main-footer .disclaimer {
+    font-size: 0.75rem;
+    max-width: 800px;
+    margin: 12px auto 0 auto;
+    opacity: 0.8;
+}
+
+/* BUTTONS */
+.btn {
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: var(--brand-blue);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 150, 214, 0.25);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 150, 214, 0.35);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--text-secondary);
+    border: 1px solid rgba(0, 150, 214, 0.15);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-clinical);
+    color: var(--text-primary);
+}
+
+.btn-success {
+    background-color: var(--success-green);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+}
+
+.btn-success:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+}
+
+.btn-large {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+/* HERO SECTION */
+.hero-section {
+    padding: 40px 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.hero-content {
+    animation: fade-in-up 0.8s ease-out;
+}
+
+.tagline {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--brand-blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.hero-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 24px;
+}
+
+.highlight-text {
+    background: linear-gradient(120deg, var(--brand-blue) 0%, #00B4D8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    max-width: 600px;
+}
+
+.hero-cta-wrapper {
+    margin-bottom: 40px;
+}
+
+.hero-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.hero-trust-badges .badge {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 150, 214, 0.08);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-trust-badges .badge i {
+    color: var(--brand-blue);
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    animation: fade-in-up 1s ease-out;
+}
+
+/* PREMIUM CLINICAL GLASS CARD (HERO) */
+.clinical-hero-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: var(--border-glass);
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.card-glass-header {
+    background: rgba(0, 150, 214, 0.05);
+    padding: 16px 20px;
+    border-bottom: var(--border-glass);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.card-status {
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-status i {
+    animation: spin 6s linear infinite;
+}
+
+.card-id {
+    color: var(--text-muted);
+}
+
+.card-glass-body {
+    padding: 24px;
+}
+
+.microbiome-visualizer {
+    background: radial-gradient(circle at center, rgba(0, 150, 214, 0.08) 0%, rgba(255, 255, 255, 0) 70%), var(--white);
+    border-radius: 12px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 150, 214, 0.06);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.fallback-visual {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.skin-cell {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 150, 214, 0.15) 0%, rgba(0, 150, 214, 0.02) 80%);
+    border: 1.5px dashed rgba(0, 150, 214, 0.3);
+}
+
+.cell-1 { width: 120px; height: 120px; top: 20px; left: 40px; animation: float-slow 8s ease-in-out infinite; }
+.cell-2 { width: 90px; height: 90px; bottom: 30px; right: 50px; animation: float-slow 10s ease-in-out infinite alternate; }
+.cell-3 { width: 60px; height: 60px; bottom: 80px; left: 160px; animation: float-slow 6s ease-in-out infinite; }
+
+.micro-nodes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--brand-blue) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+}
+
+.visual-metrics {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.metric-mini {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0, 150, 214, 0.04);
+}
+
+.metric-mini .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.metric-mini .value {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+}
+
+/* GLASS CARD (QUESTIONNAIRE & CALCULATION) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: var(--border-glass);
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+
+.questionnaire-section {
+    padding: 20px 0;
+    animation: fade-in 0.5s ease;
+}
+
+.questionnaire-card {
+    max-width: 850px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* PROGRESS BAR INDICATORS */
+.survey-progress-container {
+    padding: 30px 40px 10px 40px;
+    border-bottom: 1px solid rgba(0, 150, 214, 0.08);
+}
+
+.progress-bar-bg {
+    background: rgba(0, 150, 214, 0.08);
+    height: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, var(--brand-blue) 0%, #00B4D8 100%);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.steps-indicators {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    cursor: default;
+}
+
+.step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid rgba(0, 150, 214, 0.15);
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.step-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active .step-num {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+    color: var(--white);
+    box-shadow: 0 0 0 4px rgba(0, 150, 214, 0.15);
+}
+
+.step-indicator.active .step-text {
+    color: var(--brand-blue);
+}
+
+.step-indicator.completed .step-num {
+    background: var(--brand-blue-light);
+    border-color: var(--brand-blue);
+    color: var(--brand-blue);
+}
+
+.step-indicator.completed .step-text {
+    color: var(--text-primary);
+}
+
+/* SURVEY FORM & STEP RENDERING */
+#survey-form {
+    padding: 40px;
+}
+
+.survey-step {
+    display: none;
+}
+
+.survey-step.active {
+    display: block;
+    animation: fade-slide-in 0.4s ease-out;
+}
+
+.step-header {
+    margin-bottom: 30px;
+}
+
+.step-tag {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--brand-blue);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.step-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.step-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.form-group {
+    margin-bottom: 32px;
+}
+
+.question-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 18px;
+}
+
+.required {
+    color: var(--error-red);
+}
+
+/* CUSTOM RADIO BUTTONS (CARDS) */
+.radio-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.custom-radio input[type="radio"] {
+    display: none;
+}
+
+.radio-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.radio-card:hover {
+    border-color: var(--brand-blue-semi);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 150, 214, 0.04);
+}
+
+.radio-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 150, 214, 0.25);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.radio-circle::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--brand-blue);
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radio-label-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.badge-accent {
+    background: var(--brand-blue-light);
+    color: var(--brand-blue);
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Checked State */
+.custom-radio input[type="radio"]:checked + .radio-card {
+    border-color: var(--brand-blue);
+    background-color: rgba(0, 150, 214, 0.02);
+    box-shadow: 0 8px 20px rgba(0, 150, 214, 0.08);
+}
+
+.custom-radio input[type="radio"]:checked + .radio-card .radio-circle {
+    border-color: var(--brand-blue);
+}
+
+.custom-radio input[type="radio"]:checked + .radio-card .radio-circle::after {
+    transform: scale(1);
+}
+
+.custom-radio input[type="radio"]:checked + .radio-card .radio-label-text {
+    color: var(--brand-blue);
+}
+
+/* Vertical layout variations for Step 3 */
+.radio-options-grid-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-options-grid-vertical .radio-card {
+    padding: 16px 20px;
+}
+
+.radio-label-text strong {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.radio-label-text .subtext {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    display: block;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-card .subtext {
+    color: var(--text-secondary);
+}
+
+/* CUSTOM CHECKBOXES (CARDS) */
+.checkbox-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-soft);
+    height: 100%;
+}
+
+.checkbox-card:hover {
+    border-color: var(--brand-blue-semi);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 150, 214, 0.04);
+}
+
+.checkbox-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid rgba(0, 150, 214, 0.25);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.checkbox-box i {
+    font-size: 0.65rem;
+    color: var(--white);
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.checkbox-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.option-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.option-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Checked State */
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-card {
+    border-color: var(--brand-blue);
+    background-color: rgba(0, 150, 214, 0.02);
+    box-shadow: 0 8px 20px rgba(0, 150, 214, 0.08);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-card .checkbox-box {
+    border-color: var(--brand-blue);
+    background-color: var(--brand-blue);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-card .checkbox-box i {
+    transform: scale(1);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-card .option-title {
+    color: var(--brand-blue);
+}
+
+/* NAVIGATION AREA */
+.survey-navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 30px 40px;
+    border-top: 1px solid rgba(0, 150, 214, 0.08);
+    background: rgba(0, 150, 214, 0.01);
+}
+
+.survey-navigation .btn {
+    min-width: 130px;
+}
+
+/* DYNAMIC CLINICAL CALCULATION SECTION */
+.calculation-section {
+    padding: 60px 0;
+}
+
+.calculation-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.calculator-spinner {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px auto;
+    position: relative;
+}
+
+.calculator-spinner svg {
+    transform: rotate(-90deg);
+}
+
+.spinner-center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    color: var(--brand-blue);
+    animation: pulse-icon 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.calculation-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+}
+
+.console-log-box {
+    background: #0B2545;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    height: 150px;
+    overflow-y: hidden;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 150, 214, 0.3);
+}
+
+.console-log-box ul {
+    list-style: none;
+}
+
+.console-log-box li {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.console-log-box li::before {
+    content: '>';
+    color: var(--brand-blue);
+    font-weight: bold;
+}
+
+.console-log-box li.success {
+    color: #34D399;
+}
+
+.console-log-box li.success::before {
+    color: #34D399;
+}
+
+/* RESULTS SECTION (PRESCRIPTION VOUCHER) */
+.results-section {
+    padding: 10px 0;
+    animation: fade-in 0.8s ease;
+}
+
+.prescription-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* OFFICIAL PRESCRIPTION RIBBON */
+.prescription-badge {
+    background: #0B2545;
+    color: var(--white);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 3px solid var(--brand-blue);
+    box-shadow: var(--shadow-medium);
+}
+
+.badge-title {
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--brand-blue);
+    border-radius: 50%;
+}
+
+.badge-num {
+    color: var(--brand-blue);
+}
+
+/* PRESCRIPTION CARD LAYOUT GRID */
+.prescription-card-grid {
+    display: grid;
+    grid-template-columns: 4.5fr 5.5fr;
+    gap: 0;
+    background: var(--white);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid rgba(11, 37, 69, 0.1);
+    border-top: none;
+}
+
+.prescription-stats-card {
+    border-radius: 0 !important;
+    border: none !important;
+    border-right: 1px dashed rgba(0, 150, 214, 0.2) !important;
+    padding: 30px;
+}
+
+.prescription-details-card {
+    border-radius: 0 !important;
+    border: none !important;
+    padding: 30px;
+    background: rgba(0, 150, 214, 0.005) !important;
+}
+
+.card-section-header {
+    border-bottom: 2px solid rgba(0, 150, 214, 0.08);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+}
+
+.card-section-header h4 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0B2545;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-section-header h4 i {
+    color: var(--brand-blue);
+}
+
+.card-section-header .sub {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-top: 2px;
+}
+
+/* OVERALL SKIN SCORE DISPLAY */
+.overall-score-display {
+    background: var(--brand-blue-light);
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(0, 150, 214, 0.08);
+    margin-bottom: 24px;
+}
+
+.score-num {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--brand-blue);
+    line-height: 1;
+}
+
+.score-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.score-label strong {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.score-label span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.score-level-badge {
+    margin-left: auto;
+    background: var(--success-green);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* SVG RADAR CHART */
+.radar-chart-wrapper {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 30px auto;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#radar-chart {
+    overflow: visible;
+}
+
+.radar-axis-line {
+    stroke: rgba(11, 37, 69, 0.15);
+    stroke-width: 1;
+    stroke-dasharray: 4, 4;
+}
+
+.radar-grid-poly {
+    stroke: rgba(0, 150, 214, 0.08);
+    stroke-width: 0.8;
+}
+
+.radar-label-text {
+    font-size: 13px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    fill: var(--text-primary);
+}
+
+.radar-point {
+    fill: var(--brand-blue);
+    stroke: var(--white);
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+}
+
+.radar-point:hover {
+    r: 6px;
+    fill: #0B2545;
+}
+
+/* SKIN METRIC DETAILS (PROGRESS BARS) */
+.detailed-metrics-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.metric-bar-item {
+    width: 100%;
+}
+
+.metric-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.metric-bar-header span {
+    color: var(--text-secondary);
+}
+
+.metric-bar-header strong {
+    color: var(--text-primary);
+}
+
+.progress-track {
+    background: rgba(0, 150, 214, 0.06);
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--brand-blue);
+    border-radius: 10px;
+    width: 0%; /* Animates dynamically */
+    transition: width 1.2s cubic-bezier(0.1, 0.8, 0.2, 1);
+}
+
+/* DIAGNOSTIC REPORT TEXT */
+.diagnostic-box {
+    background: var(--white);
+    border-left: 4px solid var(--brand-blue);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-soft);
+    border-top: 1px solid rgba(0, 150, 214, 0.04);
+    border-right: 1px solid rgba(0, 150, 214, 0.04);
+    border-bottom: 1px solid rgba(0, 150, 214, 0.04);
+}
+
+.diagnostic-box h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #0B2545;
+}
+
+.diagnostic-box p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* RECOMMENDED PRODUCTS SECTION */
+.recommended-products-section {
+    margin-bottom: 30px;
+}
+
+.recommended-products-section h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #0B2545;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recommended-products-section h5 i {
+    color: var(--brand-blue);
+}
+
+.product-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.product-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.06);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.product-badge-line {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.product-card h6 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.product-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.product-use {
+    margin-top: auto;
+    font-size: 0.75rem;
+    background: var(--bg-clinical);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.product-use i {
+    color: var(--brand-blue);
+}
+
+/* PRESCRIPTION SEALS */
+.prescription-footer-seal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed rgba(0, 150, 214, 0.15);
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+
+.signature-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sig-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.sig-image {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.clinical-seal {
+    border: 2px solid rgba(0, 150, 214, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand-blue);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    transform: rotate(-3deg);
+    background: var(--white);
+    box-shadow: 0 4px 8px rgba(0, 150, 214, 0.05);
+}
+
+.clinical-seal i {
+    font-size: 1.1rem;
+}
+
+/* O2O BOOKING BOX */
+.o2o-cta-box {
+    background: linear-gradient(135deg, rgba(0, 150, 214, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%), var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.18);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-medium);
+}
+
+.o2o-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.o2o-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--brand-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 150, 214, 0.2);
+}
+
+.o2o-text h6 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.o2o-text p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.o2o-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.o2o-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 12px;
+}
+
+.form-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field-wrapper label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.form-field-wrapper input {
+    background: var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.15);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    transition: all 0.25s ease;
+}
+
+.form-field-wrapper input:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 3px rgba(0, 150, 214, 0.1);
+}
+
+/* SUCCESS BOX STYLES */
+.booking-success-box {
+    text-align: center;
+    padding: 10px 0;
+    animation: zoom-in-fade 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-icon {
+    font-size: 2.5rem;
+    color: var(--success-green);
+    margin-bottom: 12px;
+}
+
+.booking-success-box h5 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.success-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.success-desc strong {
+    color: var(--brand-blue);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+}
+
+.barcode-simulator {
+    background: var(--white);
+    border: 1px solid rgba(0, 150, 214, 0.1);
+    padding: 16px;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.barcode-lines {
+    height: 45px;
+    width: 220px;
+    background: linear-gradient(90deg, 
+        #000 0%, #000 2%, transparent 2%, transparent 4%,
+        #000 4%, #000 7%, transparent 7%, transparent 8%,
+        #000 8%, #000 9%, transparent 9%, transparent 12%,
+        #000 12%, #000 13%, transparent 13%, transparent 15%,
+        #000 15%, #000 20%, transparent 20%, transparent 21%,
+        #000 21%, #000 23%, transparent 23%, transparent 26%,
+        #000 26%, #000 27%, transparent 27%, transparent 30%,
+        #000 30%, #000 34%, transparent 34%, transparent 35%,
+        #000 35%, #000 36%, transparent 36%, transparent 40%,
+        #000 40%, #000 41%, transparent 41%, transparent 44%,
+        #000 44%, #000 49%, transparent 49%, transparent 51%,
+        #000 51%, #000 52%, transparent 52%, transparent 55%,
+        #000 55%, #000 59%, transparent 59%, transparent 62%,
+        #000 62%, #000 63%, transparent 63%, transparent 66%,
+        #000 66%, #000 68%, transparent 68%, transparent 71%,
+        #000 71%, #000 75%, transparent 75%, transparent 77%,
+        #000 77%, #000 78%, transparent 78%, transparent 81%,
+        #000 81%, #000 85%, transparent 85%, transparent 88%,
+        #000 88%, #000 92%, transparent 92%, transparent 95%,
+        #000 95%, #000 100%
+    );
+}
+
+.barcode-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+}
+
+.success-instructions {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.success-instructions strong {
+    color: var(--brand-blue);
+}
+
+/* UTILITIES */
+.hidden {
+    display: none !important;
+}
+
+/* KEYFRAME ANIMATIONS */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-slide-in {
+    from { opacity: 0; transform: translateX(15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoom-in-fade {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* MEDIA QUERIES (RESPONSIVENESS) */
+@media (max-width: 992px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
+    }
+    
+    .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-cta-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .hero-trust-badges {
+        justify-content: center;
+    }
+    
+    .hero-visual {
+        order: -1;
+    }
+    
+    .prescription-card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .prescription-stats-card {
+        border-right: none !important;
+        border-bottom: 1px dashed rgba(0, 150, 214, 0.2) !important;
+        padding: 24px;
+    }
+    
+    .prescription-details-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-wrapper {
+        padding-top: 90px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .header-badge {
+        display: none;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    #survey-form {
+        padding: 24px 16px;
+    }
+    
+    .survey-progress-container {
+        padding: 20px 16px 10px 16px;
+    }
+    
+    .step-text {
+        display: none;
+    }
+    
+    .radio-options-grid, .checkbox-options-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .survey-navigation {
+        padding: 20px 16px;
+        flex-direction: column;
+    }
+    
+    .survey-navigation .btn {
+        width: 100%;
+    }
+    
+    .product-cards-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .o2o-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* PRINT & EXPORT STYLES */
+@media print {
+    body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        font-size: 12pt;
+    }
+    
+    .bg-glow, 
+    .main-header, 
+    .main-footer, 
+    #hero-section, 
+    #questionnaire-section, 
+    #calculation-section,
+    #print-prescription-btn,
+    .o2o-form {
+        display: none !important;
+    }
+    
+    .content-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+    }
+    
+    .prescription-container {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    .prescription-badge {
+        background: #0B2545 !important;
+        color: #FFFFFF !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .prescription-card-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        border: 1px solid #CCCCCC !important;
+        box-shadow: none !important;
+        background: #FFFFFF !important;
+    }
+    
+    .prescription-stats-card {
+        border-right: 1px dashed #999999 !important;
+        padding: 20px !important;
+        background: #FFFFFF !important;
+    }
+    
+    .prescription-details-card {
+        padding: 20px !important;
+        background: #FFFFFF !important;
+    }
+    
+    .overall-score-display {
+        background: #F0F9FF !important;
+        border: 1px solid #B3E5FC !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .score-num {
+        color: #0096D6 !important;
+    }
+    
+    .score-level-badge {
+        background: #10B981 !important;
+        color: #FFFFFF !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .product-card {
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    
+    .o2o-cta-box {
+        border: 1px solid #0096D6 !important;
+        background: #F0F9FF !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    /* Ensure charts are printed clearly */
+    #radar-chart {
+        max-width: 250px !important;
+    }
+    
+    #radar-polygon {
+        fill: rgba(0, 150, 214, 0.15) !important;
+        stroke: #0096D6 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* EXPORT BUTTON HOVER STYLE */
+.export-btn-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#print-prescription-btn {
+    background-color: var(--white);
+    color: var(--brand-blue);
+    border: 2px solid var(--brand-blue-semi);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    box-shadow: var(--shadow-soft);
+}
+
+#print-prescription-btn:hover {
+    background-color: var(--brand-blue-light);
+    border-color: var(--brand-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 150, 214, 0.1);
+}
+

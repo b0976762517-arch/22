@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理膚寶水 La Roche-Posay | 醫學修護與屏障管理全方位市調</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-logo">
+                <svg viewBox="0 0 320 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="5" width="40" height="40" fill="#0096D6"/>
+                    <text x="55" y="32" font-family="'Outfit', sans-serif" font-weight="800" font-size="24" fill="#0B2545" letter-spacing="0.5">LA ROCHE-POSAY</text>
+                    <text x="55" y="44" font-family="'Inter', sans-serif" font-weight="500" font-size="9" fill="#64748B" letter-spacing="3">LABORATOIRE DERMATOLOGIQUE</text>
+                </svg>
+            </div>
+            <div class="header-badge">
+                <span class="clinical-dot"></span> 醫學臨床研發合作項目
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- HERO BANNER -->
+        <section id="hero-section" class="hero-section">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="tagline"><i class="fa-solid fa-microscope"></i> MICROBIOME SCIENCE</div>
+                    <h1>理膚寶水 La Roche-Posay</h1>
+                    <h2>醫學修護與屏障管理<br><span class="highlight-text">全方位市調 — 探索您的微生態平衡</span></h2>
+                    <p class="hero-desc">
+                        本調查旨在透過科學數據，量化您的底層肌膚屏障健康分值，並為您重組專業修護處方。只需 90 秒，取得專屬的皮膚科級修護對策。
+                    </p>
+                    <div class="hero-cta-wrapper">
+                        <button id="start-survey-btn" class="btn btn-primary btn-large">
+                            開始科學膚況檢測 (預估 90 秒) <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                    <div class="hero-trust-badges">
+                        <span class="badge"><i class="fa-solid fa-user-doctor"></i> 專業皮膚科醫師推薦</span>
+                        <span class="badge"><i class="fa-solid fa-shield-halved"></i> 100% 敏感肌測試</span>
+                        <span class="badge"><i class="fa-solid fa-vial"></i> 無添加香精/防腐劑</span>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Premium Clinical Glass Card Mockup -->
+                    <div class="clinical-hero-card">
+                        <div class="card-glass-header">
+                            <span class="card-status"><i class="fa-solid fa-circle-nodes"></i> Active Diagnostics</span>
+                            <span class="card-id">LRP-BARRIER-v4.2</span>
+                        </div>
+                        <div class="card-glass-body">
+                            <!-- SVG Cell/Microbiome Graphic -->
+                            <div class="microbiome-visualizer">
+                                <img id="hero-brand-image" src="lrp_clinical_visual.png" alt="Clinical Microbiome Visual" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'; document.querySelector('.fallback-visual').style.display='block';">
+                                <div class="fallback-visual" style="display: none;">
+                                    <div class="skin-cell cell-1"></div>
+                                    <div class="skin-cell cell-2"></div>
+                                    <div class="skin-cell cell-3"></div>
+                                    <div class="micro-nodes"></div>
+                                </div>
+                            </div>
+                            <div class="visual-metrics">
+                                <div class="metric-mini">
+                                    <span class="label">微生態平衡</span>
+                                    <span class="value">94%</span>
+                                </div>
+                                <div class="metric-mini">
+                                    <span class="label">皮脂屏障</span>
+                                    <span class="value">Normal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUESTIONNAIRE CONTAINER -->
+        <section id="questionnaire-section" class="questionnaire-section hidden">
+            <div class="glass-card questionnaire-card">
+                <!-- Progress Header -->
+                <div class="survey-progress-container">
+                    <div class="progress-bar-bg">
+                        <div id="survey-progress-fill" class="progress-bar-fill" style="width: 33%"></div>
+                    </div>
+                    <div class="steps-indicators">
+                        <div class="step-indicator active" data-step="1">
+                            <span class="step-num">1</span>
+                            <span class="step-text">基本生活環境</span>
+                        </div>
+                        <div class="step-indicator" data-step="2">
+                            <span class="step-num">2</span>
+                            <span class="step-text">生理痛點</span>
+                        </div>
+                        <div class="step-indicator" data-step="3">
+                            <span class="step-num">3</span>
+                            <span class="step-text">消費心理</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="survey-form" onsubmit="return false;">
+                    <!-- STEP 1: Basic Demographics & Life Environment -->
+                    <div class="survey-step active" id="step-1">
+                        <div class="step-header">
+                            <span class="step-tag">STEP 01 / 03</span>
+                            <h3>基本人口特徵與生活環境</h3>
+                            <p class="step-desc">我們將依據您的環境特徵，初步評估空氣中的刺激因子與肌膚代謝壓力。</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="question-label">1. 您的年齡層？ <span class="required">*</span></label>
+                            <div class="radio-options-grid">
+                                <label class="custom-radio">
+                                    <input type="radio" name="age" value="20-24" required>
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">20 - 24 歲</span>
+                                    </span>
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="age" value="25-30">
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">25 - 30 歲 <span class="badge-accent">核心都會群</span></span>
+                                    </span>
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="age" value="31-40">
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">31 - 40 歲 <span class="badge-accent">質感都會群</span></span>
+                                    </span>
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="age" value="41+">
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">41 歲以上</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="question-label">2. 您長期的生活環境或工作型態？ (可複選) <span class="required">*</span></label>
+                            <div class="checkbox-options-grid">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="environment" value="pollution">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">高污染、粉塵環境</strong>
+                                            <span class="option-desc">經常於戶外通勤、工業區或多粉塵的工作場域</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="environment" value="aircon">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">長期處於強烈冷氣房</strong>
+                                            <span class="option-desc">辦公室空調乾燥、進出溫差劇烈</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="environment" value="aesthetic">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">頻繁進出醫美診所</strong>
+                                            <span class="option-desc">進行雷射、皮秒或酸類化學煥膚等療程</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="environment" value="stress">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">常態性熬夜與高壓力工作</strong>
+                                            <span class="option-desc">睡眠時間不足 6 小時、工作節奏緊湊</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Physiological Pain Points -->
+                    <div class="survey-step" id="step-2">
+                        <div class="step-header">
+                            <span class="step-tag">STEP 02 / 03</span>
+                            <h3>生理痛點與泛紅常態</h3>
+                            <p class="step-desc">分析您最近 28 天內角質層屏障的實際微創表現與修護瓶頸。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="question-label">3. 過去 28 天內，您的肌膚經常反覆出現哪些症狀？(可複選) <span class="required">*</span></label>
+                            <div class="checkbox-options-grid">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="symptoms" value="redness">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">長期泛紅與微血管明顯</strong>
+                                            <span class="option-desc">兩頰、鼻翼常態性泛紅，冷熱溫度變化時尤為劇烈</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="symptoms" value="dryness">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">換季時反覆脫皮、極度乾燥</strong>
+                                            <span class="option-desc">上妝容易起屑，肌膚緊繃且常有刺痛感</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="symptoms" value="acne">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">痘痘反覆且留疤發炎</strong>
+                                            <span class="option-desc">皮脂分泌不均、粉刺發炎，並易留下深色暗沉痘疤</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="symptoms" value="post_op">
+                                    <span class="checkbox-card">
+                                        <span class="checkbox-box"><i class="fa-solid fa-check"></i></span>
+                                        <span class="checkbox-content">
+                                            <strong class="option-title">醫美雷射術後乾燥與屏障受損</strong>
+                                            <span class="option-desc">療程後肌膚表皮微創，泛紅敏感且無法保水</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Consumer Psychology & Authority Trust -->
+                    <div class="survey-step" id="step-3">
+                        <div class="step-header">
+                            <span class="step-tag">STEP 03 / 03</span>
+                            <h3>消費心理與權威信任度</h3>
+                            <p class="step-desc">協助我們了解您對肌膚修護產品的決策動機與科學成分信任度。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="question-label">4. 在挑選化妝水或機能液時，哪一項因素最能決定您的購買意志？ <span class="required">*</span></label>
+                            <div class="radio-options-grid-vertical">
+                                <label class="custom-radio">
+                                    <input type="radio" name="trust_factor" value="clinical" required>
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">
+                                            <strong>臨床數據實證、成分無刺激性</strong>
+                                            <span class="subtext">重視多中心測試報告、排除香精與有害添加物</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="trust_factor" value="doctor">
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">
+                                            <strong>專業皮膚科醫師或藥師權威背書</strong>
+                                            <span class="subtext">信任醫學會推薦與專業人員處方建議</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="trust_factor" value="influencer">
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">
+                                            <strong>社群網路意見領袖與網紅開箱體驗</strong>
+                                            <span class="subtext">參考社群實測對比圖、團購評價與美妝博主評測</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="trust_factor" value="cost_effective">
+                                    <span class="radio-card">
+                                        <span class="radio-circle"></span>
+                                        <span class="radio-label-text">
+                                            <strong>高性價比、平價『成分黨』開架平替</strong>
+                                            <span class="subtext">追求單純化學濃度標示、大容量低單價的日常保養</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Action Buttons -->
+                    <div class="survey-navigation">
+                        <button type="button" id="prev-btn" class="btn btn-secondary hidden"><i class="fa-solid fa-chevron-left"></i> 上一步</button>
+                        <button type="button" id="next-btn" class="btn btn-primary">下一步 <i class="fa-solid fa-chevron-right"></i></button>
+                        <button type="submit" id="submit-btn" class="btn btn-success hidden"><i class="fa-solid fa-flask-vial"></i> 提交並生成診斷報告</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- DYNAMIC CLINICAL CALCULATION ANIMATION -->
+        <section id="calculation-section" class="calculation-section hidden">
+            <div class="glass-card calculation-card">
+                <div class="calculator-spinner">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0, 150, 214, 0.1)" stroke-width="4"></circle>
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="#0096D6" stroke-width="4" stroke-dasharray="283" stroke-dashoffset="283" id="calc-spinner-fill"></circle>
+                    </svg>
+                    <div class="spinner-center-icon">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                </div>
+                <h3 id="calc-status-title">正在讀取您的肌膚大數據...</h3>
+                <div class="console-log-box">
+                    <ul id="console-logs">
+                        <!-- Dynamic analysis items appear here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAGNOSTIC RESULT (PRESCRIPTION CARD) -->
+        <section id="results-section" class="results-section hidden">
+            <div class="prescription-container">
+                <!-- Top Prescription Header/Ribbon -->
+                <div class="prescription-badge">
+                    <span class="badge-title">OFFICIAL PRESCRIPTION REPORT</span>
+                    <span class="badge-num" id="prescription-id">LRP-2026-X892</span>
+                </div>
+
+                <div class="prescription-card-grid">
+                    <!-- LEFT COLUMN: Diagnostic Stats and Radar Chart -->
+                    <div class="prescription-stats-card glass-card">
+                        <div class="card-section-header">
+                            <h4><i class="fa-solid fa-dna"></i> 肌膚微生態量化數據</h4>
+                            <span class="sub">Clinical Bio-Metric Analysis</span>
+                        </div>
+
+                        <!-- Dynamic Score Value Display -->
+                        <div class="overall-score-display">
+                            <span class="score-num" id="skin-score-value">--</span>
+                            <span class="score-label">
+                                <strong>屏障健康分值</strong>
+                                <span>Based on Barrier Integrity</span>
+                            </span>
+                            <div class="score-level-badge" id="score-level-badge">--</div>
+                        </div>
+
+                        <!-- Custom Dynamic SVG Radar Chart -->
+                        <div class="radar-chart-wrapper">
+                            <svg id="radar-chart" viewBox="0 0 400 400" width="100%" height="100%">
+                                <!-- Grid lines drawn dynamically in JS -->
+                                <g id="radar-grids"></g>
+                                <!-- Labels drawn dynamically in JS -->
+                                <g id="radar-labels"></g>
+                                <!-- Radar Polygon Path -->
+                                <polygon id="radar-polygon" points="" fill="rgba(0, 150, 214, 0.18)" stroke="#0096D6" stroke-width="2.5"></polygon>
+                                <!-- Data points -->
+                                <g id="radar-points"></g>
+                            </svg>
+                        </div>
+
+                        <!-- Progress Bar Metrics for Mobile Accessibility & Depth -->
+                        <div class="detailed-metrics-bars">
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-header">
+                                    <span>彈性 (Elasticity)</span>
+                                    <strong id="bar-val-elasticity">--%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" id="bar-fill-elasticity"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-header">
+                                    <span>耐受力 (Tolerance/Calmness)</span>
+                                    <strong id="bar-val-tolerance">--%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" id="bar-fill-tolerance"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-header">
+                                    <span>光澤度 (Radiance)</span>
+                                    <strong id="bar-val-radiance">--%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" id="bar-fill-radiance"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-header">
+                                    <span>屏障功能 (Barrier)</span>
+                                    <strong id="bar-val-barrier">--%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" id="bar-fill-barrier"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-header">
+                                    <span>平滑度 (Smoothness)</span>
+                                    <strong id="bar-val-smoothness">--%</strong>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" id="bar-fill-smoothness"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Medical Diagnostic & Customized Prescription Details -->
+                    <div class="prescription-details-card glass-card">
+                        <div class="card-section-header">
+                            <h4><i class="fa-solid fa-signature"></i> 醫師科學修護處方</h4>
+                            <span class="sub">Customized Clinical Solution</span>
+                        </div>
+
+                        <!-- Medical Diagnostic Text -->
+                        <div class="diagnostic-box">
+                            <h5>診斷報告：</h5>
+                            <p id="diagnostic-report-text">
+                                診斷載入中...
+                            </p>
+                        </div>
+
+                        <!-- Recommended Product Grid (Loaded Dynamically based on Pain Points) -->
+                        <div class="recommended-products-section">
+                            <h5><i class="fa-solid fa-prescription-bottle-medical"></i> 專屬修護品項推薦：</h5>
+                            <div class="product-cards-container" id="product-recommendation-list">
+                                <!-- Dynamic products will be rendered here -->
+                            </div>
+                        </div>
+
+                        <!-- Signatures & Validity Seals -->
+                        <div class="prescription-footer-seal">
+                            <div class="signature-block">
+                                <span class="sig-title">核發醫師 (Clinical Advisor)</span>
+                                <div class="sig-image">
+                                    <!-- Simple styled SVG doctor signature -->
+                                    <svg viewBox="0 0 150 40" width="130" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 25 C 20 20, 30 15, 35 15 C 45 15, 55 35, 60 25 C 65 15, 80 5, 95 15 C 110 25, 120 10, 140 18" stroke="#1E293B" stroke-width="2" stroke-linecap="round"></path>
+                                        <path d="M40 30 C 45 28, 55 28, 70 29" stroke="#0096D6" stroke-width="1.5" stroke-linecap="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="export-btn-block">
+                                <button type="button" id="print-prescription-btn" class="btn btn-secondary">
+                                    <i class="fa-solid fa-print"></i> 列印/匯出處方籤
+                                </button>
+                            </div>
+                            <div class="seal-block">
+                                <div class="clinical-seal">
+                                    <i class="fa-solid fa-award"></i>
+                                    <span>LRP LABS<br>VALIDATED</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O2O Physical Booking CTA Area -->
+                        <div class="o2o-cta-box">
+                            <div class="o2o-header">
+                                <div class="o2o-icon"><i class="fa-solid fa-gift"></i></div>
+                                <div class="o2o-text">
+                                    <h6>首購與回購行動呼籲 (O2O 預約)</h6>
+                                    <p>完成本市調，即刻為您開立個人化『晨間與晚間護理處方籤』。憑處方籤至核心藥局或醫美旗艦店參與『科學化肌膚檢測站』複檢，即可現場兌換專屬『隨身修護急救包』。</p>
+                                </div>
+                            </div>
+
+                            <form id="o2o-booking-form" class="o2o-form" onsubmit="return false;">
+                                <div class="form-row">
+                                    <div class="form-field-wrapper">
+                                        <label for="user-name">受訪者姓名 <span class="required">*</span></label>
+                                        <input type="text" id="user-name" placeholder="請輸入您的真實姓名" required>
+                                    </div>
+                                    <div class="form-field-wrapper">
+                                        <label for="user-phone">聯絡電話 (發送簡訊憑證) <span class="required">*</span></label>
+                                        <input type="tel" id="user-phone" placeholder="例如：0912345678" pattern="^09\d{8}$" required>
+                                    </div>
+                                </div>
+                                <button type="submit" id="book-btn" class="btn btn-primary btn-full-width">
+                                    <i class="fa-solid fa-calendar-check"></i> 立即儲存處方籤並預約線下免費檢測
+                                </button>
+                            </form>
+
+                            <!-- Success state hidden by default -->
+                            <div id="booking-success-box" class="booking-success-box hidden">
+                                <div class="success-icon"><i class="fa-regular fa-circle-check"></i></div>
+                                <h5>預約成功！數位處方籤簡訊已發送</h5>
+                                <p class="success-desc">您的專屬憑證代碼為：<strong id="voucher-code">LRP-XXXX-XXXX</strong></p>
+                                <div class="barcode-simulator">
+                                    <div class="barcode-lines"></div>
+                                    <span class="barcode-text">VOUCHER-LRP-2026-SUCCESS</span>
+                                </div>
+                                <p class="success-instructions">
+                                    請攜帶本憑證與身分證件，於 7 天內前往全台 La Roche-Posay 指定配合醫美專櫃/藥局，享有專業肌膚健康複檢檢測，並免費領取<strong>「隨身修護急救包」</strong>一份。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 La Roche-Posay Laboratoire Dermatologique. All Rights Reserved.</p>
+        <p class="disclaimer">本檢測結果僅供個人膚況了解與日常保養選擇參考，不可取代專業皮膚科醫師之診斷與療程建議。</p>
+    </footer>
+
+    <!-- Script Import -->
+    <script src="script.js"></script>
+</body>
+</html>
